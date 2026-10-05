@@ -1,4 +1,12 @@
+using Harmic.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<HarmicContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
 
 // Add services to the container.
 // AddRazorRuntimeCompilation: sửa file .cshtml rồi F5 trình duyệt là thấy ngay, không cần build lại
